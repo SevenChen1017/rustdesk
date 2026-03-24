@@ -28,7 +28,7 @@ jobs:
         uses: actions/checkout@v4
         with:
           submodules: recursive
-          - name: Inject Custom Config
+      - name: Inject Custom Config
         shell: bash
         run: |
           # 强制修改子模块中的服务器地址
@@ -36,7 +36,6 @@ jobs:
           # 强制修改子模块中的公钥 Key
           sed -i 's/pub const RS_PUB_KEY: \&str = "";/pub const RS_PUB_KEY: \&str = "s6D8csuEn4MZi5iUkwDz4MHNQAasYh61b7kpQHjaWnU";/g' libs/hbb_common/src/config.rs
           echo "Success: siteyou.cn configuration injected!"
-
       - name: Install prerequisites
         run: |
           sudo apt-get install ca-certificates -y
